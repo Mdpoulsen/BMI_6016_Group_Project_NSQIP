@@ -124,7 +124,13 @@ for name,group in inpatient_claims_grouped:
 
 
 
-
+import seaborn as sns
+import matplotlib.pyplot as plt 
+#Visualizations-waiting on other metrics to work before deciding plots 
+#Length of Stay 
+sns.histplot(LOS_list, binwidth = 3)
+plt.title("Length of Stay Distribution")
+plt.xlabel("Days");
 
 
 
