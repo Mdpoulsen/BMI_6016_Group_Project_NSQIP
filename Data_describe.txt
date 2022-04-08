@@ -3,16 +3,3 @@ CLM_ADMSN_DT : Date of hospital admission
 NCH_BENE_DSCHRG_DT : Date of hospital leave (discharge)
 ICD9_DGNS_CD_1 - 10 : Diagnosis codes; contains surgical complications
 ICD9_PRCDR_CD_1 - 6 : Procedure codes; contains surgical operations
-
--Do I use CLM_ADMSN_DT for date of operation, or CLM_FROM_DT?
--I assume I count a surgical complication within the timeframe of multiple surgeries just once.
--What if multiple criteria are met? Ex: A patient readmits for reoperation within 72 hrs. Do I
-count this for both?
--For reoperation cases, do you record LOS starting from the first or second operation? Is there
-a separate LOS for each operation?
--What if there are multiple codes for SSI's,surgeries, etc. in the same row?
--What if there are multiple occurances of the same or different SSI's within the after-surgery timeframe? 
--Do the timeframes start from the discharge date or date of admission?
--Does reoperation imply it has the same ICD-9 code?
--Does readmission just mean there is another CLM_ADMSN_DT within the timeframe?
-
