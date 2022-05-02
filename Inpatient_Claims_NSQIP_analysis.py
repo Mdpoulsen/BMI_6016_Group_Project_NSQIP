@@ -252,13 +252,34 @@ for x in range(1,PRCDR_CD_len):
 
 import seaborn as sns
 import matplotlib.pyplot as plt 
-#Visualizations-waiting on other metrics to work before deciding plots 
+
 #Length of Stay 
 sns.histplot(LOS_list, binwidth = 3)
 plt.title("Length of Stay Distribution")
 plt.xlabel("Days");
 
+#Readmission grouped by provider
+Groupby = df.groupby(["PRVDR_NUM"])["counted_readmit"].sum().nlargest(30) 
+Groupby = Groupby.to_frame()
+Groupby = Groupby.reset_index()
 
+plt.figure(figsize=(12,6))
+sns.barplot(x = "PRVDR_NUM", y ="counted_readmit", data= Groupby, palette="Accent")
+plt.xticks(fontsize = 8, rotation =40)
+plt.title("Top 30 Providers with Highest Readmission Counts");
+
+#CSV summary plot
+my_dict = {"Readmissions": 112436, "SSIs": 1132, "DVTs": 185, "Reoperations": 298}
+names = list(my_dict.keys())
+values = list(my_dict.values())
+
+graph = sns.barplot(x=names,y= values, palette="Accent")
+i=0
+for p in graph.patches:
+    height = p.get_height()
+    graph.text(p.get_x()+p.get_width()/2., height + 0.1,
+        values[i],ha="center")
+    i += 1
 
 
 
